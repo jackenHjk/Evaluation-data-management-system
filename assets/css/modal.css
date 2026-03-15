@@ -1,0 +1,37 @@
+.modal-header {
+    background: var(--bs-primary);
+    color: white;
+}
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+.modal-title {
+    color: white !important;
+}
+
+.modal-header .modal-icon {
+    margin-right: 8px;
+    color: white;
+}
+
+/* 确认模态框特殊样式 */
+#confirmModal .modal-header {
+    background: var(--bs-warning);
+}
+
+#confirmModal .modal-body {
+    font-size: 1.1em;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+#confirmModal .modal-footer {
+    justify-content: center;
+    padding: 1rem;
+}
+
+#confirmModal .btn-danger {
+    min-width: 100px;
+} 
