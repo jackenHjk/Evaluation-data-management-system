@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景圆形 -->
+    <circle cx="16" cy="16" r="16" fill="#007AFF"/>
+    
+    <!-- 图表柱形图案 -->
+    <rect x="8" y="18" width="4" height="8" rx="1" fill="white" fill-opacity="0.9"/>
+    <rect x="14" y="12" width="4" height="14" rx="1" fill="white"/>
+    <rect x="20" y="8" width="4" height="18" rx="1" fill="white" fill-opacity="0.9"/>
+</svg> 

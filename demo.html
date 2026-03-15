@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测评数据管理系统 - 智能化的教育成绩管理解决方案</title>
+    <!-- <link rel="icon" type="image/svg+xml" href="favicon.svg"> -->
+    <link rel="alternate icon" href="favicon.ico">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/all.min.css" rel="stylesheet">
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?96c398c2588be4aabed98f4998cf1cd3";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #007AFF;
+            --secondary-color: #5856D6;
+            --accent-color: #FF2D55;
+            --background-light: #F5F5F7;
+            --text-primary: #1D1D1F;
+            --text-secondary: #86868B;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* 导航栏样式 */
+        nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .related-projects {
+            margin-top: 30px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .primary-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .primary-button:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Hero区域样式 */
+        .hero {
+            background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .demo-accounts {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            margin: 2rem auto;
+            animation: fadeIn 1s ease 0.5s both;
+        }
+
+        .demo-accounts h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-accounts ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .demo-accounts li {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            font-family: monospace;
+        }
+
+        /* 特性区域样式 */
+        .features {
+            padding: 6rem 0;
+            background: var(--background-light);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 功能详解区域样式 */
+        .details {
+            padding: 6rem 0;
+            background: var(--background-light);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .detail-item {
+            text-align: left;
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-icon {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .detail-image {
+            width: 100%;
+            height: 160px;
+            margin: 1rem 0;
+            background: var(--background-light);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 技术规格区域样式 */
+        .specs {
+            background: var(--background-light);
+            padding: 6rem 0;
+        }
+
+        .spec-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .spec-list {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-projects {
+            margin-top: 30px;
+        }
+        /* 新增页脚样式 */
+        .footer {
+            background-color: #274C43;
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        /* 动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .feature-grid, .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><i class="fas fa-chart-line me-2"></i>测评数据管理系统</div>
+            <div class="demo-button">
+                <a href="/login.php" class="primary-button"  target="_blank">在线演示</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section class="hero">
+        <h1>智能化的教育成绩管理解决方案</h1>
+        <div class="demo-accounts">
+            <h3>演示账号</h3>
+            <ul>
+                <li>超级管理员账号：admin / admin123</li>
+                <li>教导处（教务处）账号：jdc / admin123</li>
+                <li>学生信息管理账号：bzr / admin123</li>
+                <li>学生信息管理账号：bzr2 / admin123</li>
+                <li>数据录入账号：yjz1 / admin123</li>
+                <li>数据录入账号：yjz2 / admin123</li>
+
+            </ul>
+            <p style="font-size:12px; text-align:left;">1.此为完全功能演示，管理员/教导处/数据录入账号有做多设备登录限制，故关闭前请先退出账号。
+            </br>2.两个数据录入账号分别对应不同年级学科的数据录入权限。
+            </br>3.为确保体验用户设备安全，在demo模式下日志管理中显示的IP地址都做了处理，不会显示访问用户的真实IP地址。
+            </br>4.demo系统中的学生名字来自互联网，请勿对号入座。</p>
+        </div>
+    </section>
+
+    <!-- 核心特性 -->
+    <section class="features">
+        <div class="feature-grid">
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#007AFF" stroke-width="2"/>
+                    <path d="M19 15C20.6569 15 22 13.6569 22 12C22 10.3431 20.6569 9 19 9" stroke="#007AFF" stroke-width="2"/>
+                    <path d="M5 15C3.34315 15 2 13.6569 2 12C2 10.3431 3.34315 9 5 9" stroke="#007AFF" stroke-width="2"/>
+                </svg>
+                <h3>多角色权限管理</h3>
+                <p>完善的角色权限体系，支持管理员、教导处、班主任、阅卷教师（录入数据）等多种角色，权限精确可控。</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H15" stroke="#007AFF" stroke-width="2"/>
+                    <path d="M12 12H15" stroke="#007AFF" stroke-width="2"/>
+                    <path d="M12 16H15" stroke="#007AFF" stroke-width="2"/>
+                    <path d="M9 12H9.01" stroke="#007AFF" stroke-width="2"/>
+                    <path d="M9 16H9.01" stroke="#007AFF" stroke-width="2"/>
+                </svg>
+                <h3>多学科管理体系</h3>
+                <p>支持多学科成绩录入，灵活的分数线设置，高年级语文学科支持语基和作文分数分开记录并自动合算。</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 8H8V16H16V8Z" stroke="#007AFF" stroke-width="2"/>
+                    <path d="M5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21Z" stroke="#007AFF" stroke-width="2"/>
+                </svg>
+                <h3>统计分析功能</h3>
+                <p>强大的数据分析能力，支持班级年级成绩数据分析、量身定制语数学科分析、分数分布统计等多维度分析。</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 7V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7" stroke="#007AFF" stroke-width="2"/>
+                    <path d="M15 13L12 16L9 13" stroke="#007AFF" stroke-width="2"/>
+                    <path d="M12 16V8" stroke="#007AFF" stroke-width="2"/>
+                </svg>
+                <h3>数据导出下载</h3>
+                <p>支持成绩数据和统计报表的导出，方便数据备份和信息共享。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能详解 -->
+    <section class="details">
+        <div class="section-title">
+            <h2>核心功能特性</h2>
+            <p>专注于提供最佳的教育成绩管理体验</p>
+        </div>
+        <div class="detail-grid">
+            <div class="detail-item">
+                <div class="detail-icon">📊</div>
+                <h3>数据可视化</h3>
+                <p>直观的成绩分布图表、班级对比分析等，让数据一目了然。</p>
+                <div class="detail-image">
+                    <!-- 此处放置数据可视化相关的截图 -->
+                    <img src="assets/images/sjksh.png" alt="数据可视化示例">
+                </div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-icon">🔄</div>
+                <h3>项目管理</h3>
+                <p>支持多个考试项目，可设置不同学期，灵活自定义内容，数据相互独立。</p>
+                <div class="detail-image">
+                    <!-- 此处放置项目管理相关的截图 -->
+                    <img src="assets/images/xmgl.png" alt="项目管理示例">
+                </div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-icon">📝</div>
+                <h3>日志系统</h3>
+                <p>详细记录用户操作，方便追踪和管理，确保数据安全。</p>
+                <div class="detail-image">
+                    <!-- 此处放置日志系统相关的截图 -->
+                    <img src="assets/images/rzxt.png" alt="日志系统示例">
+                </div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-icon">🔒</div>
+                <h3>安全性设计</h3>
+                <p>严格的权限控制、强制水印显示、数据备份功能，全方位保护数据安全。</p>
+                <div class="detail-image">
+                    <!-- 此处放置安全性设计相关的截图 -->
+                    <img src="assets/images/aqxsj.png" alt="安全性设计示例">
+                </div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-icon">🎯</div>
+                <h3>简易操作</h3>
+                <p>界面直观友好，操作简单明了，无需培训即可上手，真正做到0学习成本。</p>
+                <div class="detail-image">
+                    <!-- 此处放置简易操作相关的截图 -->
+                    <img src="assets/images/jycz.png" alt="简易操作示例">
+                </div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-icon">⚡️</div>
+                <h3>实时反馈</h3>
+                <p>成绩数据录入即刻生成分析结果，统计图表实时更新，让教学决策更快更准确。</p>
+                <div class="detail-image">
+                    <!-- 此处放置实时反馈相关的截图 -->
+                    <img src="assets/images/ssfk.png" alt="实时反馈示例">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术规格 -->
+    <section class="specs">
+        <div class="spec-container">
+            <h2 class="text-center mb-5">技术要求</h2>
+            <div class="spec-list">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>服务器环境</h4>
+                        <ul>
+                            <li>PHP 8.1+</li>
+                            <li>MySQL 5.7+</li>
+                            <li>PDO扩展</li>
+                            <li>GD扩展</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>浏览器支持</h4>
+                        <ul>
+                            <li>Chrome 80+</li>
+                            <li>Firefox 75+</li>
+                            <li>Safari 13+</li>
+                            <li>Edge 80+</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>© 2025 测评数据管理系统 版权所有</p>
+            <p>技术支持·意见反馈：<a href="mailto:coli06@163.com">coli06@163.com</a></p>
+            <div class="related-projects">
+                <p style="margin-bottom: 15px">相关项目推荐</p>
+                    <a href="https://qd.655537.xyz" class="project-link"   target="_blank">
+                    电脑室电子签到系统
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 图片预览模态框 -->
+    <div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-0">
+                    <img id="previewImage" src="" alt="" style="max-width: 100%; max-height: 80vh;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 图片预览功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为所有 detail-image 中的图片添加点击事件
+            const images = document.querySelectorAll('.detail-image img');
+            const previewModal = new bootstrap.Modal(document.getElementById('imagePreviewModal'));
+            const previewImage = document.getElementById('previewImage');
+
+            images.forEach(img => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function() {
+                    previewImage.src = this.src;
+                    previewImage.alt = this.alt;
+                    previewModal.show();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
